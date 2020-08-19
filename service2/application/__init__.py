@@ -1,4 +1,3 @@
-
 # import Flask class from the flask module
 from flask import Flask, request
 
