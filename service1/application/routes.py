@@ -10,9 +10,9 @@ from application import app,db
 def home():
     return render_template('home.html', title='Home Page')
 
-@app.rout('generate_animal')
+@app.rout('generate_animal',methods=['GET','POST'])
 def generate_animal():
-    animal = requests.get('localhost:5001/get_animal')
-    noise = requests.post('localhost:5001/get_noise',data=animal.text)
+    animal = requests.get('service2:5001/get_animal')
+    noise = requests.post('service2:5001/get_noise',data=animal.text)
     
     return render_template('generate_animal.html',title='Generate Animal Page',data1=animal.text,data2=noise.text)
