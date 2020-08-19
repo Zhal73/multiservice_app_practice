@@ -12,7 +12,7 @@ def home():
 
 @app.route('/generate_animal',methods=['GET','POST'])
 def generate_animal():
-    animal = requests.get('service2:5001/get_animal')
-    noise = requests.post('service2:5001/get_noise',data=animal.text)
+    animal = requests.get('http://localhost:5001/get_animal')
+    noise = requests.post('http://localhost:5001/get_noise',data=animal.text)
     
     return render_template('generate_animal.html',title='Generate Animal Page',data1=animal.text,data2=noise.text)
