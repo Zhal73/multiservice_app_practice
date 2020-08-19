@@ -3,7 +3,19 @@
 <div>
 	<h3> This is the animal:</h3>
 	<span> Animal : {{ data1 }} <br>
-		noise : {{ data2 }}
+		Noise : {{ data2 }}
 	<span>
+		<a href="{{ url_for('generate_animal') }} ">Another?</a>
+
+	<p> These are all the records so far: <p>
+	{% if posts %}
+		{% for item in posts %}
+			<div>
+				Animal : {{ item.animal }} <br>
+				Noise  : {{ item.noise }} <br>
+				--------------------------------
+			<div>
+		{% endfor %}
+	{% endif %}
 <div>
 {% endblock %}
