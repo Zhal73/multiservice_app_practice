@@ -1,8 +1,8 @@
 # import render_template, url_for and request functions from the flask module
 from flask import render_template,redirect, url_for, request
-
+import requests
 # import the app object from the ./application/__init__.py
-from application import app,db
+from application import app
 
 # define routes for / & /home, this function will be called when these are accessed
 @app.route('/')
@@ -10,7 +10,7 @@ from application import app,db
 def home():
     return render_template('home.html', title='Home Page')
 
-@app.rout('generate_animal',methods=['GET','POST'])
+@app.route('/generate_animal',methods=['GET','POST'])
 def generate_animal():
     animal = requests.get('service2:5001/get_animal')
     noise = requests.post('service2:5001/get_noise',data=animal.text)
